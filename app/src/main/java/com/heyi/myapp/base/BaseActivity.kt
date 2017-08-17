@@ -10,6 +10,8 @@ import android.util.Log
 import android.view.WindowManager
 import android.widget.Toast
 import com.heyi.myapp.R
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.disposables.Disposable
 import me.imid.swipebacklayout.lib.app.SwipeBackActivity
 
 /**
@@ -19,6 +21,7 @@ import me.imid.swipebacklayout.lib.app.SwipeBackActivity
 abstract class BaseActivity:SwipeBackActivity(),IView{
     protected val TAG:String=this.javaClass.simpleName
     protected var progress:ProgressDialog?=null
+    protected val subs:CompositeDisposable= CompositeDisposable()
 
      @CallSuper
    override fun onCreate(savedInstanceState: Bundle?) {
@@ -87,6 +90,11 @@ abstract class BaseActivity:SwipeBackActivity(),IView{
       }
     }
 
+    fun addSubscription(sub:Disposable){
+     subs.add(sub)
+    }
+
+
     @CallSuper
     override fun onRestart() {
      super.onRestart()
@@ -116,6 +124,13 @@ abstract class BaseActivity:SwipeBackActivity(),IView{
      super.onStop()
       Log.d(TAG,"---onStop---")
      }
+
+    @CallSuper
+    override fun onDestroy() {
+     super.onDestroy()
+     Log.d(TAG,"---onDestory---")
+      subs.dispose()
+    }
 
 
 }

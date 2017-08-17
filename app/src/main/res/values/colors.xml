@@ -27,4 +27,7 @@
     <color name="blue_primary_text_color">#212121</color>
     <color name="blue_second_dark_color">#757575</color>
     <color name="blue_divider_color">#BDBDBD</color>
+
+    <!--others-->
+    <color name="white">@android:color/white</color>
 </resources>

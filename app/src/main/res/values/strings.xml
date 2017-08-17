@@ -1,8 +1,9 @@
 <resources>
-    <string name="app_name">MyApp</string>
+    <string name="app_name">我的App</string>
 
 
     <string name="msg_loading">加载中...</string>
+    <string name="msg_start">开启旅程</string>
 
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
